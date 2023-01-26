@@ -1,0 +1,57 @@
+
+<!--div class="form">
+  <dxo-form [customizeItem]="customizeItem">
+    <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
+      <dxi-item dataField="FirstName"></dxi-item>
+      <dxi-item dataField="LastName"></dxi-item>
+      <dxi-item dataField="Prefix"></dxi-item>
+      <dxi-item dataField="BirthDate"></dxi-item>
+      <dxi-item dataField="Position"></dxi-item>
+      <dxi-item dataField="HireDate"></dxi-item>
+      <dxi-item dataField="Notes" editorType="dxTextArea" [colSpan]="2" [editorOptions]="notesEditorOptions">
+      </dxi-item>
+      <dxi-item dataField="HireDate"></dxi-item>
+    </dxi-item>
+    <dxi-item dataField="AddressRequired" [colSpan]="2">
+    </dxi-item>
+    <dxi-item itemType="group" caption="Home Address" [colCount]="2" [colSpan]="2">
+      <dxi-item dataField="StateID"></dxi-item>
+      <dxi-item dataField="Address"></dxi-item>
+    </dxi-item>
+  </dxo-form>
+</div-->
+
+<!--<dxo-form [customizeItem]="customizeItem">
+    <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
+      <dxi-item dataField="FirstName"></dxi-item>
+      <dxi-item dataField="LastName"></dxi-item>
+      <dxi-item dataField="Prefix"></dxi-item>
+      <dxi-item dataField="BirthDate"></dxi-item>
+      <dxi-item dataField="Position"></dxi-item>
+      <dxi-item dataField="HireDate"></dxi-item>
+      <dxi-item dataField="Notes" editorType="dxTextArea" [colSpan]="2" [editorOptions]="notesEditorOptions"></dxi-item>
+      <dxi-item dataField="HireDate"></dxi-item></dxi-item>
+
+    <dxi-item itemType="group" caption="Home Address" [colCount]="2" [colSpan]="2">
+      <dxi-item dataField="StateID"></dxi-item>
+      <dxi-item dataField="Address"></dxi-item>
+    </dxi-item>
+  </dxo-form-->
+
+     <!--dx-form [customizeItem]="customizeItem">
+      <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
+        <dxi-item dataField="FirstName"></dxi-item>
+        <dxi-item dataField="LastName"></dxi-item>
+        <dxi-item dataField="Prefix"></dxi-item>
+        <dxi-item dataField="BirthDate"></dxi-item>
+        <dxi-item dataField="Position"></dxi-item>
+        <dxi-item dataField="HireDate"></dxi-item>
+        <dxi-item dataField="StateID"></dxi-item>
+        <dxi-item dataField="Address"></dxi-item>
+        <dxi-item dataField="Notes" editorType="dxTextArea" [colSpan]="2" [editorOptions]="notesEditorOptions">
+        </dxi-item>
+        <dxi-item dataField="HireDate"></dxi-item>
+      </dxi-item>
+      <dxi-item itemType="group" caption="Home Address" [colCount]="2" [colSpan]="2">
+        </dxi-item>
+    </dx-form-->

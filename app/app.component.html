@@ -1,0 +1,65 @@
+<div class="date">
+  <h2>GRID FORM POP-UP</h2>
+  <dx-data-grid (onEditorPreparing)="onEditorPreparing($event)" (onInitNewRow)="onInitNewRow($event)"
+    [dataSource]="dataSource" keyExpr="ID" [showBorders]="true">
+    <dxo-toolbar>
+      <dxi-item name="groupPanel"></dxi-item>
+      <dxi-item location="after"></dxi-item>
+      <dxi-item name="addRowButton" showText="always"></dxi-item>
+    </dxo-toolbar>
+    <dxo-paging [enabled]="false"></dxo-paging>
+
+    <dxo-editing mode="popup" [allowAdding]="true" [allowUpdating]="true">
+      <dxo-popup title="Edit Profile" [showTitle]="true" [width]="700" [height]="725">
+      </dxo-popup>
+    </dxo-editing>
+
+    <dxi-column dataField="Prefix" caption="Title" [width]="70"></dxi-column>
+    <dxi-column dataField="FirstName" [setCellValue]="setCellValue"></dxi-column>
+    <dxi-column dataField="LastName"></dxi-column>
+    <dxi-column dataField="BirthDate" dataType="date"></dxi-column>
+    <dxi-column dataField="Position" [width]="170"></dxi-column>
+    <dxi-column dataField="HireDate" dataType="date"></dxi-column>
+    <dxi-column dataField="StateID" caption="State" [width]="125">
+      <dxo-lookup [dataSource]="states" displayExpr="Name" valueExpr="ID">
+      </dxo-lookup>
+    </dxi-column>
+
+    <dxi-column dataField="Address" [visible]="false">
+    </dxi-column>
+    <dxi-column dataField="Notes" [visible]="false">
+    </dxi-column>
+  </dx-data-grid>
+</div>
+
+<div class="form">
+  <h2>Form to dataGrid</h2>
+  <dx-form [customizeItem]="customizeItem" (onInitNewRow)="onInitNewRow($event)" dataSource="dataSource" keyExpr="ID">
+    <dxi-item itemType="group" [colCount]="3" [colSpan]="3">
+      <dxi-item dataField="Prefix" caption="Title" [width]="70"></dxi-item>
+      <dxi-item dataField="FirstName"></dxi-item>
+      <dxi-item dataField="LastName"></dxi-item>
+      <dxi-item dataField="BirthDate" dataType="date"></dxi-item>
+      <dxi-item dataField="Position"></dxi-item>
+      <dxi-item dataField="HireDate" dataType="date"></dxi-item>
+      <dxi-item dataField="Address"></dxi-item>
+      <dxi-column dataField="StateID" caption="State" [width]="125">
+        <dxo-lookup [dataSource]="states" displayExpr="Name" valueExpr="ID">
+        </dxo-lookup>
+      </dxi-column>
+      <dxi-item dataField="Notes" editorType="dxTextArea" [colSpan]="2" [editorOptions]="notesEditorOptions">
+      </dxi-item>
+      <dxi-item>
+        <dx-button type="success" [width]="120" (click)="onButtonClick($event)" [useSubmitBehavior]="true">SEND FORM
+        </dx-button>
+      </dxi-item>
+
+    </dxi-item>
+
+  </dx-form>
+
+  <!--<dx-button [width]="215">SAVE</dx-button>  dx-button text="Submit" (click)="onButtonClick" type="success" [useSubmitBehavior]="true"></dx-button<span class="dx-button-text">Save</span>-->
+  <!--(onEditorPreparing)="customizeItem($event)"
+    (onInitNewRow)="onInitNewRow($event)" dataSource="dataSource" keyExpr="ID"><dx-button [width]="215" (click)="onButtonClick" type="success" [useSubmitBehavior]="true">SAVE</dx-button>-->
+
+</div>
