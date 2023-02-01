@@ -1,91 +1,52 @@
-import { Component } from '@angular/core';
-import { Employee, EmployeesService } from './employees.service';
-import { Workbook } from 'exceljs';
-import saveAs from 'file-saver';
-import { exportDataGrid as exportDataGridToPdf } from 'devextreme/pdf_exporter';
-import { jsPDF } from 'jspdf';
-import { exportDataGrid } from 'devextreme/excel_exporter';
-import { DxFormModule } from 'devextreme-angular';
-import DxForm from 'devextreme/ui/form';
-
+import { Component, ViewChild } from '@angular/core';
+import { DataService, getForm, State } from './data.service';
+import config from 'devextreme/core/config';
+import { DxDataGridComponent } from 'devextreme-angular';
+import Autocomplete from 'devextreme/ui/autocomplete';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-
+  providers: [DataService],
+  styleUrls: ['./app.component.css'],
 })
+
 export class AppComponent {
+  dados = [];
+  @ViewChild(DxDataGridComponent) dataGrid: DxDataGridComponent;
+  dataSource: any;
+  getForm: any;
+  States: State[];
+  notesEditorOptions: any;
+  formData: any = {};
+  Data: any;
+  countries: string[];
 
-  onButtonClick() {
-    window.open('https://www.devpedrolima.tech/', '_blank');
-  }
-  nButtonClick() {
-    window.open('https://stackoverflow.co/', '_blank');
-  }
-  ButtonClick() {
-    window.open('https://stackoverflow.com/questions/29496536/is-there-any-way-with-devexpress-to-explicitly-set-the-ids-of-objects', '_blank');
-  }
-  uttonClick() {
-    window.open('https://www.canva.com', '_blank');
-  }
-  employ = {
-    name: 'Steave',
-    position: 'Developer',
-    hireDate: new Date(2002, 7, 24),
-    officeNumber: 911,
-    notes: 'I`m Programmer',
-    phone: '+1(213) 555-9392',
-    skype: 'jheart_DX_skype',
-    email: 'jheart@dx-email.com',
-}
-  hireDateOptions = {
-    disabled: true
-  }
-  showMessage = () => {
-    alert("i`m best world programmer");
-  }
-
-  employees: Employee[] = [];
-  selectedEmployee: Employee;
-  expanded: Boolean = true;
-
-  constructor(service: EmployeesService) {
-    this.employees = service.getEmployees();
-    this.selectEmployee = this.selectEmployee.bind(this);
-  }
-
-  selectEmployee(e) {
-    e.component.byKey(e.currentSelectedRowKeys[0]).done(employee => {
-      if(employee) {
-        this.selectedEmployee = employee;
-      }
+  constructor(service: DataService) {
+    config({
+      editorStylingMode: 'filled',
     });
+    this.dataSource = service.getEmployees();
+    this.States = service.getStates();
+    this.notesEditorOptions = {height: 100};
   }
 
-  exportGrid(e) {
-    if (e.format === 'xlsx') {
-      const workbook = new Workbook();
-      const worksheet = workbook.addWorksheet("Main sheet");
-      exportDataGrid({
-        worksheet: worksheet,
-        component: e.component,
-      }).then(function() {
-        workbook.xlsx.writeBuffer().then(function(buffer) {
-          saveAs(new Blob([buffer], { type: "application/octet-stream" }), "DataGrid.xlsx");
-        });
-      });
-      e.cancel = true;
+  customizeItem = (item) => {
+    if (item && item.itemType === 'group' && item.caption === 'Home Address') {
+      const gridInstance = this.dataGrid.instance;
+      const editRowKey = gridInstance.option('editing.editRowKey');
+      const rowIndex = gridInstance.getRowIndexByKey(editRowKey);
+      this.formData.push(this.formData);
+      item.visible = gridInstance.cellValue(rowIndex, 'AddressRequired');
     }
-    else if (e.format === 'pdf') {
-      const doc = new jsPDF();
-      exportDataGridToPdf({
-        jsPDFDocument: doc,
-        component: e.component,
-      }).then(() => {
-        doc.save('DataGrid.pdf');
-      });
-    }
-  }
+  };
 
+
+  adicionar(e) {
+    this.dataSource.push(this.formData);
+    this.States.push(this.Data)
+    e.preventDefault();
+    e.preventDefault(FormData);
+    e.preventDefault(this.States);
+  }
 }

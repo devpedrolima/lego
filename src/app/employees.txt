@@ -1,0 +1,65 @@
+/*
+  selectEmployee(e: { component: { byKey: (arg0: any) => { ($send): any; new(): any; done: { (arg0: (employee: any) => void): void; new($send): any; }; }; }; currentSelectedRowKeys: any[]; }) {
+    e.component.byKey(e.currentSelectedRowKeys[0]).done((employee: Employee) => {
+      if (employee) {
+        this.selectedEmployee = employee;
+      }
+    });
+  }
+
+  exportGrid(e: { format: string; component: any; cancel: boolean; }) {
+    if (e.format === 'xlsx') {
+      const workbook = new Workbook();
+      const worksheet = workbook.addWorksheet("Main sheet");
+      exportDataGrid({
+        worksheet: worksheet,
+        component: e.component,
+      }).then(function () {
+        workbook.xlsx.writeBuffer().then(function (buffer) {
+          saveAs(new Blob([buffer], { type: "application/octet-stream" }), "DataGrid.xlsx");
+        });
+      });
+      e.cancel = true;
+    }
+  }*/
+// e.preventDefault();
+// this.formData.push(this.formData);
+// this.dataSource.data.push(this.formData);
+
+//var dataSource = new this.formData.data.DataSource({
+//  store: {
+//    Categories: {
+//      ID: 'number',
+//      FirstName: 'string',
+//      LastName: 'string',
+//      Prefix: 'string',
+//      Position: 'string',
+//      BirthDate: 'string',
+//      HireDate: 'string',
+//      Notes: 'string',
+//      Address: 'string',
+//      AddressRequired: 'boolean',
+//      StateID: 'number',
+//    },
+//  }
+//});
+
+//var dataSource = new this.formData.data.DataSource({
+//    store: {
+//      Categories: {
+//        ID: 'number',
+//        FirstName: 'string',
+//        LastName: 'string',
+//        Prefix: 'string',
+//        Position: 'string',
+//        BirthDate: 'string',
+//        HireDate: 'string',
+//        Notes: 'string',
+//        Address: 'string',
+//        AddressRequired: 'boolean',
+//        StateID: 'number',
+//      },
+//    }
+//  });
+//console.log('data', this.formData);
+//this.dataSource._updateChangeSubscription(getForm);

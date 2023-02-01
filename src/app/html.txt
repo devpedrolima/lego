@@ -1,0 +1,17 @@
+<!--<dxo-editing mode="popup" [allowAdding]="true" [allowUpdating]="true">
+      <dxo-popup
+        title="Edit Profile"
+        [showTitle]="true"
+        [width]="700"
+        [height]="725"
+      >
+      </dxo-popup>
+    </dxo-editing>
+dataField="Estado"
+          editorType="dxSelectBox"
+          [editorOptions]="{ dataSource: States }"
+          displayExpr="Name" valueExpr="StateID"
+
+  -->
+
+<!--keyExpr="ID"-- cuidadoo nao mexer-->

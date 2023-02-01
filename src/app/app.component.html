@@ -1,103 +1,96 @@
-<div class="navbar">
-  <dx-menu>
-    <dxi-item icon="home" text="Home">
-    </dxi-item>
-    <dxi-item icon="group" text="About">
-    </dxi-item>
-    <dxi-item icon="product" text="Products">
-    </dxi-item>
-    <dxi-item icon="cart" text="Shop">
-    </dxi-item>
-  </dx-menu>
-</div>
-<div id="app-container">
-  <h3>Grid Angular</h3>
-  <dx-data-grid id="dataGrid" [dataSource]="employees" keyExpr="EmployeeID" [allowColumnResizing]="true"
-    [columnAutoWidth]="true" [allowColumnReordering]="true" (onSelectionChanged)="selectEmployee($event)"
-    (onExporting)="exportGrid($event)">
-    <dxi-column dataField="FullName" [fixed]="true">
-      <dxi-validation-rule type="required"></dxi-validation-rule>
+<div class="date">
+  <h2>GRID FORM</h2>
+  <dx-data-grid [dataSource]="dataSource" [showBorders]="true">
+    <dxo-paging [enabled]="false"></dxo-paging>
+    <dxi-column dataField="prefixo" caption="Titulo" [width]="70"></dxi-column>
+    <dxi-column dataField="nome"></dxi-column>
+    <dxi-column dataField="sobrenome"></dxi-column>
+    <dxi-column dataField="data_de_nascimento" dataType="date"></dxi-column>
+    <dxi-column dataField="cargo" [width]="170"></dxi-column>
+    <dxi-column dataField="data_de_contratação" dataType="date"></dxi-column>
+    <dxi-column dataField="StateID" caption="estado" [width]="125">
+      <dxo-lookup [dataSource]="States" displayExpr="Name" valueExpr="ID">
+      </dxo-lookup>
     </dxi-column>
-    <dxi-column dataField="Position">
-      <dxi-validation-rule type="required"></dxi-validation-rule>
-    </dxi-column>
-    <dxi-column dataField="BirthDate" dataType="date" [width]="100">
-      <dxi-validation-rule type="required"></dxi-validation-rule>
-    </dxi-column>
-    <dxi-column dataField="HireDate" dataType="date" [width]="100">
-      <dxi-validation-rule type="required"></dxi-validation-rule>
-    </dxi-column>
-    <dxi-column dataField="City"></dxi-column>
-    <dxi-column dataField="Country" [groupIndex]="0" sortOrder="asc">
-      <dxi-validation-rule type="required"></dxi-validation-rule>
-    </dxi-column>
-    <dxi-column dataField="Address"></dxi-column>
-    <dxi-column dataField="HomePhone"></dxi-column>
-    <dxi-column dataField="PostalCode" [visible]="false"></dxi-column>
-    <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
-    <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
-    <dxo-filter-row [visible]="true"></dxo-filter-row>
-    <dxo-search-panel [visible]="true"></dxo-search-panel>
-    <dxo-group-panel [visible]="true"></dxo-group-panel>
-    <dxo-selection mode="single"></dxo-selection>
-    <dxo-summary>
-      <dxi-group-item summaryType="count">
-      </dxi-group-item>
-    </dxo-summary>
-    <dxo-editing mode="popup" [allowUpdating]="true" [allowDeleting]="true" [allowAdding]="true">
-    </dxo-editing>
-    <dxo-grouping [autoExpandAll]="expanded"></dxo-grouping>
-    <dxo-toolbar>
-      <dxi-item name="groupPanel"></dxi-item>
-      <dxi-item location="after">
-        <dx-button [text]="expanded ? 'Collapse All' : 'Expand All'" [width]="136" (onClick)="expanded = !expanded">
-        </dx-button>
-      </dxi-item>
-      <dxi-item name="addRowButton" showText="always"></dxi-item>
-      <dxi-item name="exportButton"></dxi-item>
-      <dxi-item name="columnChooserButton"></dxi-item>
-      <dxi-item name="searchPanel"></dxi-item>
-    </dxo-toolbar>
-    <dxo-master-detail [enabled]="true" [template]="'employee-info'">
-    </dxo-master-detail>
-    <div *dxTemplate="let employee of 'employee-info'">
-      <img class="employee-photo" [src]="employee.data.Photo">
-      <p class="employee-notes">{{ employee.data.Notes }}</p>
-    </div>
-    <dxo-export [enabled]="true" [formats]="['xlsx', 'pdf']">
-    </dxo-export>
-  </dx-data-grid>
-  <p id="selected-employee" *ngIf="selectedEmployee">
-    Selected employee: {{ selectedEmployee.FullName }}
-  </p>
-</div>
 
-<div class="button">
-  <dx-button icon="comment" text="Click me!" (onClick)="showMessage()" stylingMode="outlined" type="success">
-  </dx-button>
+    <dxi-column dataField="Address" [visible]="false"> </dxi-column>
+    <dxi-column dataField="Notes" [visible]="false"> </dxi-column>
+  </dx-data-grid>
 </div>
 
 <div class="form">
-  <h3>Form</h3>
-  <dx-form [formData]="employ" [colCount]="2">
-    <dxi-item dataField="name"></dxi-item>
-    <dxi-item dataField="officeNumber"></dxi-item>
-    <dxi-item dataField="position"></dxi-item>
-    <dxi-item dataField="hireDate"></dxi-item>
-    <dxi-item dataField="hireDate" [editorOptions]="hireDateOptions">
-    </dxi-item>
-    <dxi-tab title="Contacts">
-      <dxi-item dataField="skype"></dxi-item>
-      <dxi-item dataField="phone"></dxi-item>
-      <dxi-item dataField="email"></dxi-item>
-    </dxi-tab>
-    <dxi-item dataField="notes" [colSpan]="2">
-    </dxi-item>
-  </dx-form>
+  <h2>Form to dataGrid</h2>
 
+  <form (submit)="adicionar($event)">
+    <dx-form [formData]="formData">
+      <dxi-item itemType="group" [colCount]="2" [colSpan]="2">
+        <dxi-item dataField="prefixo" caption="Título" [width]="70"></dxi-item>
+        <dxi-item dataField="nome"
+          ><dxi-validation-rule type="required"> </dxi-validation-rule
+        ></dxi-item>
+
+        <dxi-item dataField="sobrenome"
+          ><dxi-validation-rule type="required"> </dxi-validation-rule
+        ></dxi-item>
+
+        <dxi-item
+          dataField="data_de_nascimento"
+          showEditorAlways="true"
+          editorType="dxDateBox"
+          ><dxi-validation-rule type="required"> </dxi-validation-rule
+        ></dxi-item>
+
+        <dxi-item dataField="cargo"
+          ><dxi-validation-rule type="required"> </dxi-validation-rule
+        ></dxi-item>
+
+        <dxi-item
+          dataField="data_de_contratação"
+          showEditorAlways="true"
+          editorType="dxDateBox"
+          showEditorAlways="true"
+        >
+        </dxi-item>
+
+        <dxi-item dataField="Address"></dxi-item>
+
+        <dxi-item >
+          <dx-select-box
+            [dataSource]="States"
+            [value]="1"
+            displayExpr="States"
+
+
+            >
+          </dx-select-box>
+        </dxi-item>
+
+        <dxi-item
+          dataField="Notes"
+          editorType="dxTextArea"
+          [colSpan]="2"
+          [editorOptions]="notesEditorOptions">
+        </dxi-item>
+
+        <dxi-item
+          itemType="button"
+          dataSource="dataSource"
+          [buttonOptions]="{
+            text: 'enviar',
+            useSubmitBehavior: true,
+            type: 'success'}">
+        </dxi-item>
+      </dxi-item>
+    </dx-form>
+
+
+  </form>
 </div>
 
-<div class="buttontwo">
-  <dx-button type="success" (click)="onButtonClick()">Enviar dados</dx-button>
-</div>
-
+<!--dx-select-box
+      [dataSource]="States"
+      [value]="1"
+      displayExpr="Name"
+      valueExpr="ID"
+    >
+    </dx-select-box-->

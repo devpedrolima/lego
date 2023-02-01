@@ -1,66 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,400&display=swap");
 
-#dataGrid {
-  height: 700px;
-  margin-top: 30px;
-
+.date{
+    width: 950px;
+    margin-left: 530px;
+    margin-top: 40px;
+    font-family: 'Roboto', 'Helvetica', 'Sans-serif';
 }
-.employee-photo {
-  height: 140px;
-  float:none;
-  padding: 0 20px 20px 0;
-}
-
-.employee-notes {
-  text-align: justify;
-  white-space: normal;
-}
-
-#dataGrid {
-  height: 500px;
-}
-
-#app-container {
-  margin-top: 1vh;
-  margin-left: 160px;
-  width: 1100px;
-}
-
-#selected-employee {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
-}
-
-.form {
-  margin-left: 170px;
-  position: absolute;
-  font-family: 'Roboto', 'Helvetica', 'Sans-serif';
-}
-
-.button {
-
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 1rem 6rem;
-  text-transform: uppercase;
-  margin-top:07vh;
-  margin-left: 540px;
-}
-
-.buttontwo {
-
-  cursor: pointer;
-  font-size: 3rem;
-  font-weight: bold;
-  padding: 1rem 6rem;
-  text-transform: uppercase;
-  margin-top:28vh;
-  margin-left: 562px;
-}
-
-.navbar {
-float: right;
-
+.form{
+    margin-top: 70px;
+    margin-left: 670px;
+    width: 700px;
+    font-family: 'Roboto', 'Helvetica', 'Sans-serif';
 }

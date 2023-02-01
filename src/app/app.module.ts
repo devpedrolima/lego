@@ -1,28 +1,44 @@
-import { DxDataGridModule } from 'devextreme-angular/ui/data-grid';
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { DxButtonModule, DxCheckBoxModule, DxFormComponent, DxFormModule, DxMenuModule, DxPopoverModule } from 'devextreme-angular';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { NgModule } from '@angular/core';
+
+import { DxDataGridModule } from 'devextreme-angular/ui/data-grid';
+import { DxTemplateModule } from 'devextreme-angular/core';
+import { DxTextAreaModule } from 'devextreme-angular/ui/text-area';
+import { DxButtonModule, DxCheckBoxModule, DxDateBoxModule, DxDrawerModule, DxSelectBoxModule, DxFormComponent, DxFormModule, DxAccordionModule, DxListModule, DxMenuModule, DxPopoverModule, DxToolbarModule } from 'devextreme-angular';
 import DxForm from 'devextreme/ui/form';
 import { DevExtremeModule } from 'devextreme-angular';
 
+import { AppComponent } from './app.component';
+import { TeamCardComponent } from './team-card/team-card.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TeamCardComponent
   ],
+
   imports: [
-   BrowserModule,
-   AppRoutingModule,
-   DxButtonModule,
-   DxDataGridModule,
-   DxCheckBoxModule,
-   DxMenuModule,
-   DxFormModule,
-   DxPopoverModule
+    BrowserModule,
+    DxDataGridModule,
+    DxTemplateModule,
+    DxTextAreaModule,
+    DxButtonModule,
+    DxCheckBoxModule,
+    DxDrawerModule,
+    DxFormModule,
+    DxAccordionModule,
+    DxListModule,
+    DxMenuModule,
+    DxPopoverModule,
+    DxToolbarModule,
+    DxDateBoxModule,
+    DxSelectBoxModule
   ],
+
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
+
+
 export class AppModule { }
